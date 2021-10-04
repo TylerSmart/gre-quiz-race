@@ -1,0 +1,13 @@
+<main [ngSwitch]="SameDeviceGame.state$.getValue()">
+  <section *ngSwitchCase="SameDeviceGameState.Player1Ready">
+    <div>Player 1 Ready</div>
+    <div>time: {{ SameDeviceGame.readyTimer?.countdown$ | async }}</div>
+  </section>
+
+  <section *ngSwitchCase="SameDeviceGameState.Player1">Player 1</section>
+
+  <section *ngSwitchCase="SameDeviceGameState.Player2Ready">
+    <div>Player 2 Ready</div>
+    <div>time: {{ SameDeviceGame.readyTimer?.countdown$ | async }}</div>
+  </section>
+</main>
