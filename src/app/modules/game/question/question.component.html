@@ -1,1 +1,12 @@
-<p>question works!</p>
+<main *ngIf="question">
+  <div>{{ question.question }}</div>
+
+  <button
+    mat-raised-button
+    color="primary"
+    *ngFor="let answer of question.answers"
+    (click)="submit.emit(answer)"
+  >
+    {{ answer.answer }}
+  </button>
+</main>

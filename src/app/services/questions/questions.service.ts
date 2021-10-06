@@ -132,7 +132,18 @@ const QUESTIONS: IQuestionData[] = [
 export class QuestionsService {
   constructor() {}
 
-  getQuestions(): IQuestionData[] {
-    return QUESTIONS;
+  async getQuestions(count: number = 10): Promise<IQuestionData[]> {
+    const questions = JSON.parse(JSON.stringify(QUESTIONS));
+    if (questions.length < count) throw 'Could not gather enough questions.';
+
+    return new Array(10)
+      .fill(undefined)
+      .map(
+        (_) =>
+          questions.splice(
+            (Math.random() * 10) % questions.length,
+            1
+          )[0] as IQuestionData
+      );
   }
 }

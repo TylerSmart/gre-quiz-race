@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeModule } from './modules/home/home.module';
 import { SameDeviceModule } from './modules/same-device/same-device.module';
 import { GameModule } from './modules/game/game.module';
+import { TimePipe } from './modules/pipes/time/time.pipe';
 
 @NgModule({
   declarations: [AppComponent],

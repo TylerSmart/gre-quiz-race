@@ -4,10 +4,54 @@
     <div>time: {{ SameDeviceGame.readyTimer?.countdown$ | async }}</div>
   </section>
 
-  <section *ngSwitchCase="SameDeviceGameState.Player1">Player 1</section>
+  <section *ngSwitchCase="SameDeviceGameState.Player1">
+    <div>Player 1</div>
+    <div>{{ timeCounter | time: "m" }}</div>
+    <div>{{ SameDeviceGame.questionIndex$.getValue() }}/10</div>
+
+    <app-question
+      [question]="question"
+      (submit)="SameDeviceGame.checkAnswer($event)"
+    ></app-question>
+  </section>
 
   <section *ngSwitchCase="SameDeviceGameState.Player2Ready">
     <div>Player 2 Ready</div>
     <div>time: {{ SameDeviceGame.readyTimer?.countdown$ | async }}</div>
+  </section>
+
+  <section *ngSwitchCase="SameDeviceGameState.Player2">
+    <div>Player 2</div>
+    <div>{{ timeCounter | time: "m" }}</div>
+    <div>{{ SameDeviceGame.questionIndex$.getValue() }}/10</div>
+
+    <app-question
+      [question]="question"
+      (submit)="SameDeviceGame.checkAnswer($event)"
+    ></app-question>
+  </section>
+
+  <section *ngSwitchCase="SameDeviceGameState.Review">
+    <div>Review</div>
+    <div>
+      Player 1 Time:
+      {{
+        SameDeviceGame.player1End!.getTime() -
+          SameDeviceGame.player1Start!.getTime() | time: "m"
+      }}
+    </div>
+    <div>
+      Player 2 Time:
+      {{
+        SameDeviceGame.player2End!.getTime() -
+          SameDeviceGame.player2Start!.getTime() | time: "m"
+      }}
+    </div>
+    <button
+      mat-raised-button
+      (click)="SameDeviceGame.state$.next(SameDeviceGameState.Player1Ready)"
+    >
+      Play Again
+    </button>
   </section>
 </main>
