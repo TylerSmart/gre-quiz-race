@@ -20,19 +20,15 @@ export enum SameDeviceGameState {
   providedIn: 'root',
 })
 export class SameDeviceGameService {
-  public state$: BehaviorSubject<SameDeviceGameState | null> =
-    new BehaviorSubject<SameDeviceGameState | null>(null);
+  public state$ = new BehaviorSubject<SameDeviceGameState | null>(null);
 
   public player1Start: Date | null = null;
   public player2Start: Date | null = null;
   public player1End: Date | null = null;
   public player2End: Date | null = null;
 
-  public questions$: BehaviorSubject<IQuestionData[] | null> =
-    new BehaviorSubject<IQuestionData[] | null>(null);
-  public questionIndex$: BehaviorSubject<number | null> = new BehaviorSubject<
-    number | null
-  >(null);
+  public questions$ = new BehaviorSubject<IQuestionData[] | null>(null);
+  public questionIndex$ = new BehaviorSubject<number | null>(null);
 
   public readyTimer: TimerData | null = null;
 

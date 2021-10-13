@@ -14,7 +14,7 @@ import {
 export class SameDeviceGameComponent implements OnInit {
   timeCounter: number | null = null;
   question: IQuestionData | null = null;
-  timerInterval: any;
+  timerInterval: any = null;
 
   constructor(public SameDeviceGame: SameDeviceGameService) {
     this.SameDeviceGame.state$.subscribe((state) => {

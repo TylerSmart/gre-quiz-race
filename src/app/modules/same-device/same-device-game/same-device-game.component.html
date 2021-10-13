@@ -47,6 +47,18 @@
           SameDeviceGame.player2Start!.getTime() | time: "m"
       }}
     </div>
+
+    <!-- TODO: Show questions that need to be reviewed -->
+    <div *ngFor="let reviewQuestion of SameDeviceGame.reviewQuestions">
+      <div>{{ reviewQuestion.question }}</div>
+
+      <div *ngFor="let answer of reviewQuestion.answers">
+        {{ answer.answer }}
+        <span *ngIf="answer.correct">- Correct answer</span>
+      </div>
+      <hr />
+    </div>
+
     <button
       mat-raised-button
       (click)="SameDeviceGame.state$.next(SameDeviceGameState.Player1Ready)"
