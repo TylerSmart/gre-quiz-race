@@ -1,0 +1,22 @@
+main {
+  margin: 10px;
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  .room-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
+
+    button {
+      margin: 0.25em 0 calc(0.25em + 1.34375em);
+    }
+  }
+
+  > button {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
