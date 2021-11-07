@@ -1,12 +1,20 @@
 <main *ngIf="question">
-  <div>{{ question.question }}</div>
-
-  <button
-    mat-raised-button
-    color="primary"
-    *ngFor="let answer of question.answers"
-    (click)="submit.emit(answer)"
-  >
-    {{ answer.answer }}
-  </button>
+  <div class="btn-container">
+    <div 
+      color="accent"
+      class="qtn-container">
+      {{ question.question }}
+    </div>
+  </div>
+  <div class="btn-container">
+    <div class="center">
+      <button
+        mat-raised-button
+        color="primary"
+        *ngFor="let answer of question.answers"
+        (click)="submit.emit(answer)">
+        {{ answer.answer }}
+      </button>
+    </div>
+  </div>
 </main>
