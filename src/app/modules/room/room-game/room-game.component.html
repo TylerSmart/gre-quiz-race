@@ -1,1 +1,87 @@
-<p>room-game works!</p>
+<main [ngSwitch]="RoomGame.state$.getValue()">
+  <section *ngSwitchCase="RoomGameState.Player1Ready">
+    <div>Player 1 Ready</div>
+    <div>time: {{ RoomGame.readyTimer?.countdown$ | async }}</div>
+  </section>
+
+  <section *ngSwitchCase="RoomGameState.Player1">
+    <ng-container *ngIf="RoomGame.name == RoomGame.player1?.name">
+      <div class="username-container">
+        <h1>Player 1</h1>
+      </div>
+      <div class="time-container">
+        {{ timeCounter | time: "m" }}
+      </div>
+      <div class="question-count-container">
+        Question {{ RoomGame.questionIndex$.getValue() }}/10
+      </div>
+
+      <app-question
+        [question]="question"
+        (submit)="RoomGame.checkAnswer($event)"
+      ></app-question>
+    </ng-container>
+  </section>
+
+  <section *ngSwitchCase="RoomGameState.Player2Ready">
+    <div class="username-container">
+      <h1>Player 2 Ready</h1>
+    </div>
+    <div>time: {{ RoomGame.readyTimer?.countdown$ | async }}</div>
+  </section>
+
+  <section *ngSwitchCase="RoomGameState.Player2">
+    <ng-container *ngIf="RoomGame.name == RoomGame.player2?.name">
+      <div class="username-container">
+        <h1>Player 2</h1>
+      </div>
+      <div class="time-container">
+        {{ timeCounter | time: "m" }}
+      </div>
+      <div class="question-count-container">
+        {{ RoomGame.questionIndex$.getValue() }}/10
+      </div>
+
+      <app-question
+        [question]="question"
+        (submit)="RoomGame.checkAnswer($event)"
+      ></app-question>
+    </ng-container>
+  </section>
+
+  <section *ngSwitchCase="RoomGameState.Review">
+    <div>Review</div>
+    <div>
+      Player 1 Time:
+      {{
+        RoomGame.player1End!.getTime() - RoomGame.player1Start!.getTime()
+          | time: "m"
+      }}
+    </div>
+    <div>
+      Player 2 Time:
+      {{
+        RoomGame.player2End!.getTime() - RoomGame.player2Start!.getTime()
+          | time: "m"
+      }}
+    </div>
+
+    <!-- TODO: Show questions that need to be reviewed -->
+    <div *ngFor="let reviewQuestion of RoomGame.reviewQuestions">
+      <div>{{ reviewQuestion.question }}</div>
+
+      <div *ngFor="let answer of reviewQuestion.answers">
+        {{ answer.answer }}
+        <span *ngIf="answer.correct">- Correct answer</span>
+      </div>
+      <hr />
+    </div>
+
+    <button
+      mat-raised-button
+      (click)="RoomGame.state$.next(RoomGameState.Player1Ready)"
+    >
+      Play Again
+    </button>
+  </section>
+</main>
