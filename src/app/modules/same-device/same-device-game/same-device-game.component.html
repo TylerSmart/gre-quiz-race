@@ -1,7 +1,12 @@
 <main [ngSwitch]="SameDeviceGame.state$.getValue()">
   <section *ngSwitchCase="SameDeviceGameState.Player1Ready">
-    <div>Player 1 Ready</div>
-    <div>time: {{ SameDeviceGame.readyTimer?.countdown$ | async }}</div>
+    <div>
+      <div class="countdown-container">
+        <div><h1>Player 1</h1></div>
+        <div><h1>Ready In</h1></div>
+        <div><h1>{{ SameDeviceGame.readyTimer?.countdown$ | async }}</h1></div>
+      </div>
+    </div>
   </section>
 
   <section *ngSwitchCase="SameDeviceGameState.Player1">
@@ -14,7 +19,6 @@
     <div class="question-count-container">
       Question {{ SameDeviceGame.questionIndex$.getValue() }}/10
     </div>
-
     <app-question
       [question]="question"
       (submit)="SameDeviceGame.checkAnswer($event)"
@@ -22,11 +26,12 @@
   </section>
 
   <section *ngSwitchCase="SameDeviceGameState.Player2Ready">
-    <div class="username-container">
-      <h1>Player 2 Ready</h1>
-    </div>
     <div>
-      time: {{ SameDeviceGame.readyTimer?.countdown$ | async }}
+      <div class="countdown-container">
+        <div><h1>Player 2</h1></div>
+        <div><h1>Ready In</h1></div>
+        <div><h1>{{ SameDeviceGame.readyTimer?.countdown$ | async }}</h1></div>
+      </div>
     </div>
   </section>
 
@@ -40,7 +45,6 @@
     <div class="question-count-container">
       {{ SameDeviceGame.questionIndex$.getValue() }}/10
     </div>
-
     <app-question
       [question]="question"
       (submit)="SameDeviceGame.checkAnswer($event)"
