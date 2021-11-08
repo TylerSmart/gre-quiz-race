@@ -38,6 +38,7 @@
     type="button"
     [disabled]="!roomGame.player1 || !roomGame.player2"
     *ngIf="roomGame.player && roomGame.player.admin"
+    (click)="startGame()"
   >
     Start
   </button>

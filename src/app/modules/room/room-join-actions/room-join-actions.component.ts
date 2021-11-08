@@ -27,11 +27,14 @@ export class RoomJoinActionsComponent implements OnInit {
   public async leaveRoom() {
     this.roomGame
       .leaveRoom()
-      .then(() => {
-        console.log('Here');
-      })
+      .then(() => {})
       .finally(() => {
         this.router.navigateByUrl('home');
       });
+  }
+
+  public async startGame() {
+    console.log('Here');
+    this.roomGame.startGame().then(() => {});
   }
 }

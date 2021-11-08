@@ -5,6 +5,8 @@ import { RoomViewComponent } from './room-view/room-view.component';
 import { RouterModule } from '@angular/router';
 import { RoomGameComponent } from './room-game/room-game.component';
 import { MaterialModule } from '../material/material.module';
+import { PipesModule } from '../pipes/pipes.module';
+import { GameModule } from '../game/game.module';
 
 @NgModule({
   declarations: [
@@ -12,6 +14,12 @@ import { MaterialModule } from '../material/material.module';
     RoomViewComponent,
     RoomGameComponent,
   ],
-  imports: [CommonModule, RouterModule, MaterialModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    MaterialModule,
+    PipesModule,
+    GameModule,
+  ],
 })
 export class RoomModule {}
