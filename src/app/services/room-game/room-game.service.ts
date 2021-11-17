@@ -72,35 +72,47 @@ export class RoomGameService {
     this.socket.on('game', (response: any) => {
       this.socket.removeAllListeners('start-error');
       console.log({ response });
-      this.questions$.next(response.questions);
+      if (response.questions) this.questions$.next(response.questions);
       this.state$.next(response.state);
       this.questionIndex$.next(response.questionIndex);
+
+      if (response.player1Start)
+        this.player1Start = new Date(response.player1Start);
+      if (response.player2Start)
+        this.player2Start = new Date(response.player2Start);
+      if (response.player1End) this.player1End = new Date(response.player1End);
+      if (response.player2End) this.player2End = new Date(response.player2End);
     });
 
     this.state$.subscribe((state) => {
+      console.log({ state });
       switch (state) {
         case RoomGameState.Player1Ready:
           this.readyTimer = this.createTimer();
           this.readyTimer.timer$.subscribe((_) => {
-            this.state$.next(RoomGameState.Player1);
+            // this.state$.next(RoomGameState.Player1);
+            if (this.name == this.player1?.name)
+              this.socket.emit('ready-finished');
             this.readyTimer = null;
           });
           break;
         case RoomGameState.Player1:
-          this.player1Start = new Date();
-          this.questionIndex$.next(0);
+          if (!this.player1Start) this.player1Start = new Date();
+          // this.questionIndex$.next(0);
           break;
         case RoomGameState.Player2Ready:
           this.player1End = new Date();
           this.readyTimer = this.createTimer();
           this.readyTimer.timer$.subscribe((_) => {
-            this.state$.next(RoomGameState.Player2);
+            // this.state$.next(RoomGameState.Player2);
+            if (this.name == this.player2?.name)
+              this.socket.emit('ready-finished');
             this.readyTimer = null;
           });
           break;
         case RoomGameState.Player2:
-          this.player2Start = new Date();
-          this.questionIndex$.next(0);
+          if (!this.player2Start) this.player2Start = new Date();
+          // this.questionIndex$.next(0);
           break;
         case RoomGameState.Review:
           this.player2End = new Date();
@@ -199,15 +211,30 @@ export class RoomGameService {
       const questionIndex: number = this.questionIndex$.getValue() as number;
       if (questionIndex + 1 >= 10) {
         if (this.state$.getValue() == RoomGameState.Player1) {
-          this.state$.next(RoomGameState.Player2Ready);
+          this.socket.emit('switch');
+          // this.state$.next(RoomGameState.Player2Ready);
         } else {
-          this.state$.next(RoomGameState.Review);
+          this.socket.emit('review');
+          // this.state$.next(RoomGameState.Review);
         }
       } else {
+        this.socket.emit('question', questionIndex + 1);
         this.questionIndex$.next(questionIndex + 1);
       }
     } else {
       this.currentQuestion.review = true;
     }
+  }
+
+  playAgain() {
+    this.socket.emit('play-again');
+    this.state$.next(null);
+    this.player1Start = null;
+    this.player2Start = null;
+    this.player1End = null;
+    this.player2End = null;
+
+    this.questions$.next(null);
+    this.questionIndex$.next(null);
   }
 }
