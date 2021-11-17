@@ -13,13 +13,22 @@
         {{ timeCounter | time: "m" }}
       </div>
       <div class="question-count-container">
-        Question {{ RoomGame.questionIndex$.getValue() }}/10
+        Question {{ RoomGame.questionIndex$.getValue() ?? 0 + 1 }}/10
       </div>
 
       <app-question
         [question]="question"
         (submit)="RoomGame.checkAnswer($event)"
       ></app-question>
+    </ng-container>
+    <ng-container *ngIf="RoomGame.name != RoomGame.player1?.name">
+      <div>
+        <h1>Player 1</h1>
+      </div>
+      <div>
+        {{ timeCounter | time: "m" }}
+      </div>
+      <div>Question {{ RoomGame.questionIndex$.getValue() ?? 0 + 1 }}/10</div>
     </ng-container>
   </section>
 
@@ -39,13 +48,24 @@
         {{ timeCounter | time: "m" }}
       </div>
       <div class="question-count-container">
-        {{ RoomGame.questionIndex$.getValue() }}/10
+        {{ RoomGame.questionIndex$.getValue() ?? 0 + 1 }}/10
       </div>
 
       <app-question
         [question]="question"
         (submit)="RoomGame.checkAnswer($event)"
       ></app-question>
+    </ng-container>
+    <ng-container *ngIf="RoomGame.name != RoomGame.player2?.name">
+      <div class="username-container">
+        <h1>Player 2</h1>
+      </div>
+      <div class="time-container">
+        {{ timeCounter | time: "m" }}
+      </div>
+      <div class="question-count-container">
+        {{ RoomGame.questionIndex$.getValue() ?? 0 + 1 }}/10
+      </div>
     </ng-container>
   </section>
 
@@ -77,11 +97,6 @@
       <hr />
     </div>
 
-    <button
-      mat-raised-button
-      (click)="RoomGame.state$.next(RoomGameState.Player1Ready)"
-    >
-      Play Again
-    </button>
+    <button mat-raised-button (click)="RoomGame.playAgain()">Play Again</button>
   </section>
 </main>
