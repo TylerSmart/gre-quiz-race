@@ -99,6 +99,7 @@ export class SameDeviceGameService {
 
   checkAnswer(answer: IAnswerData) {
     if (answer.correct) {
+      this.playCorrectAnswerSound();
       const questionIndex: number = this.questionIndex$.getValue() as number;
       if (questionIndex + 1 >= 10) {
         if (this.state$.getValue() == SameDeviceGameState.Player1) {
@@ -110,7 +111,23 @@ export class SameDeviceGameService {
         this.questionIndex$.next(questionIndex + 1);
       }
     } else {
+      this.playWrongAnswerSound();
       this.currentQuestion.review = true;
     }
   }
+
+  playCorrectAnswerSound() {
+    let sound = new Audio();
+    sound.src = "assets/sound/correct_answer_sound.wav";
+    sound.load();
+    sound.play();
+  }
+
+  playWrongAnswerSound() {
+    let sound = new Audio();
+    sound.src = "assets/sound/incorrect_answer_sound.wav";
+    sound.load();
+    sound.play();
+  }
 }
+
