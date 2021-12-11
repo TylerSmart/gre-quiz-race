@@ -1,11 +1,31 @@
 .countdown-container {
     text-align: center;
     position: relative;
-    line-height: 70%;
+    line-height: 100%;
     width: 70%;
-    height: 50%;
+    height: 100%;
     margin: 10px auto;
-    padding-top: 50px;
+    padding: 10px;
+}
+
+.player-text {
+    line-height: 1.6;
+    font-size: 350%;
+    font-weight: bold;
+    padding: 10px;
+    margin: 20px; 
+}
+
+.ready-text {
+    padding: 20px;
+    letter-spacing: .09cm;
+}
+
+.countdown-text {
+    font-size: 650%;
+    font-weight: bold;
+    padding: 20px;
+    text-shadow: .08em .08em 0 rgb(185, 186, 186);
 }
 
 .question-count-container {

@@ -2,9 +2,16 @@
   <section *ngSwitchCase="SameDeviceGameState.Player1Ready">
     <div>
       <div class="countdown-container">
-        <div><h1>Player 1</h1></div>
-        <div><h1>Ready In</h1></div>
-        <div><h1>{{ SameDeviceGame.readyTimer?.countdown$ | async }}</h1></div>
+        <div class="player-text">
+          Player 1<br/>
+          <div class="ready-text">
+            Ready<br/>
+            In<br/>
+          </div>
+        </div>
+        <div class="countdown-text">
+          {{ SameDeviceGame.readyTimer?.countdown$ | async }}
+        </div>
       </div>
     </div>
   </section>
@@ -28,9 +35,16 @@
   <section *ngSwitchCase="SameDeviceGameState.Player2Ready">
     <div>
       <div class="countdown-container">
-        <div><h1>Player 2</h1></div>
-        <div><h1>Ready In</h1></div>
-        <div><h1>{{ SameDeviceGame.readyTimer?.countdown$ | async }}</h1></div>
+        <div class="player-text">
+          Player 2<br/>
+            <div class="ready-text">
+              Ready<br/>
+              In<br/>
+          </div>          
+        </div>
+        <div class="countdown-text">
+          {{ SameDeviceGame.readyTimer?.countdown$ | async }}
+        </div>
       </div>
     </div>
   </section>
