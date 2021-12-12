@@ -20,6 +20,17 @@
         [question]="question"
         (submit)="RoomGame.checkAnswer($event)"
       ></app-question>
+      <div class="powerups">
+        <button
+          mat-raised-button
+          color="accent"
+          class="btn-power-ups"
+          [disabled]="RoomGame.fiftyFifty.getValue()"
+          (click)="useFiftyFifty()"
+        >
+          50/50
+        </button>
+      </div>
     </ng-container>
     <ng-container *ngIf="RoomGame.name != RoomGame.player1?.name">
       <div>
@@ -29,6 +40,18 @@
         {{ timeCounter | time: "m" }}
       </div>
       <div>Question {{ RoomGame.questionIndex$.getValue() ?? 0 + 1 }}/10</div>
+
+      <div class="powerups">
+        <button
+          mat-raised-button
+          color="accent"
+          class="btn-power-ups"
+          [disabled]="RoomGame.freeze.getValue()"
+          (click)="useFreeze()"
+        >
+          Freeze
+        </button>
+      </div>
     </ng-container>
   </section>
 
@@ -55,6 +78,17 @@
         [question]="question"
         (submit)="RoomGame.checkAnswer($event)"
       ></app-question>
+      <div class="powerups">
+        <button
+          mat-raised-button
+          color="accent"
+          class="btn-power-ups"
+          [disabled]="RoomGame.fiftyFifty.getValue()"
+          (click)="useFiftyFifty()"
+        >
+          50/50
+        </button>
+      </div>
     </ng-container>
     <ng-container *ngIf="RoomGame.name != RoomGame.player2?.name">
       <div class="username-container">
@@ -65,6 +99,17 @@
       </div>
       <div class="question-count-container">
         {{ RoomGame.questionIndex$.getValue() ?? 0 + 1 }}/10
+      </div>
+      <div class="powerups">
+        <button
+          mat-raised-button
+          color="accent"
+          class="btn-power-ups"
+          [disabled]="RoomGame.freeze.getValue()"
+          (click)="useFreeze()"
+        >
+          Freeze
+        </button>
       </div>
     </ng-container>
   </section>

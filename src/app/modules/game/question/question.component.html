@@ -10,16 +10,11 @@
         mat-raised-button
         color="primary"
         *ngFor="let answer of question.answers"
-        (click)="submit.emit(answer)">
+        (click)="submit.emit(answer)"
+      >
         {{ answer.answer }}
       </button>
     </div>
-    <button mat-raised-button color="accent" class="btn-power-ups">50/50</button>
-    <button mat-raised-button color="accent" class="btn-power-ups">Test</button>
-    <button mat-raised-button color="accent" class="btn-power-ups">Test</button>
-    <button mat-raised-button color="accent" class="btn-power-ups">Test</button>
   </div>
-  <div>
-    
-  </div>
+  <div></div>
 </main>
