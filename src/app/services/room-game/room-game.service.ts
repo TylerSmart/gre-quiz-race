@@ -38,6 +38,9 @@ export class RoomGameService {
   public questions$ = new BehaviorSubject<IQuestionData[] | null>(null);
   public questionIndex$ = new BehaviorSubject<number | null>(null);
 
+  public fiftyFifty = new BehaviorSubject<boolean>(false);
+  public freeze = new BehaviorSubject<boolean>(false);
+
   public readyTimer: TimerData | null = null;
 
   get player(): RoomPlayer | null {
@@ -88,6 +91,8 @@ export class RoomGameService {
       console.log({ state });
       switch (state) {
         case RoomGameState.Player1Ready:
+          this.fiftyFifty.next(false);
+          this.freeze.next(false);
           this.readyTimer = this.createTimer();
           this.readyTimer.timer$.subscribe((_) => {
             // this.state$.next(RoomGameState.Player1);
@@ -101,6 +106,8 @@ export class RoomGameService {
           // this.questionIndex$.next(0);
           break;
         case RoomGameState.Player2Ready:
+          this.fiftyFifty.next(false);
+          this.freeze.next(false);
           this.player1End = new Date();
           this.readyTimer = this.createTimer();
           this.readyTimer.timer$.subscribe((_) => {
@@ -118,6 +125,14 @@ export class RoomGameService {
           this.player2End = new Date();
           break;
       }
+    });
+
+    this.socket.on('fiftyFifty', () => {
+      this.fiftyFifty.next(true);
+    });
+
+    this.socket.on('freeze', () => {
+      this.freeze.next(true);
     });
   }
 
@@ -236,5 +251,13 @@ export class RoomGameService {
 
     this.questions$.next(null);
     this.questionIndex$.next(null);
+  }
+
+  useFiftyFifty() {
+    this.socket.emit('fiftyFifty');
+  }
+
+  useFreeze() {
+    this.socket.emit('freeze');
   }
 }

@@ -1,42 +1,38 @@
 .btn-container {
-    text-align: center;
-    border-top-left-radius: 20px;
+  text-align: center;
+  border-top-left-radius: 20px;
 }
 
 .qtn-container {
-    width: 85%;
-    height: 120px;
-    position: relative;
-    line-height: 120px;
-    text-align: center;
-    display: block;
-    margin: 10px auto;
-    padding: 0;
+  width: 85%;
+  height: 120px;
+  position: relative;
+  line-height: 120px;
+  text-align: center;
+  display: block;
+  margin: 10px auto;
+  padding: 0;
 
-    overflow: hidden;
+  overflow: hidden;
 
-    border-width: 0;
-    outline: none;
-    border-radius: 2px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 
-    background-color: #2ecc71;
-    color: #ecf0f1;
+  background-color: #2ecc71;
+  color: #ecf0f1;
 }
 
 button {
-    margin: 5px;
-    width: 85%;
+  margin: 5px;
+  width: 85%;
 }
 
 .qtn {
-    width: 70%;
-    height: 90px;
-    text-align: center;
-    margin: 27px;
-    padding: 25px;
-}
-
-.btn-power-ups {
-    width: 19%;
+  width: 70%;
+  height: 90px;
+  text-align: center;
+  margin: 27px;
+  padding: 25px;
 }

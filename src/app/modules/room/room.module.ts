@@ -7,12 +7,14 @@ import { RoomGameComponent } from './room-game/room-game.component';
 import { MaterialModule } from '../material/material.module';
 import { PipesModule } from '../pipes/pipes.module';
 import { GameModule } from '../game/game.module';
+import { FreezeDialogComponent } from './freeze-dialog/freeze-dialog.component';
 
 @NgModule({
   declarations: [
     RoomJoinActionsComponent,
     RoomViewComponent,
     RoomGameComponent,
+    FreezeDialogComponent,
   ],
   imports: [
     CommonModule,
