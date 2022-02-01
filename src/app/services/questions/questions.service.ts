@@ -143,7 +143,28 @@ export class QuestionsService {
   constructor() {}
 
   async getQuestions(count: number = 10): Promise<IQuestionData[]> {
-    const questions = JSON.parse(JSON.stringify(QUESTIONS));
+    // const questions = JSON.parse(JSON.stringify(QUESTIONS));
+
+    const questions = await fetch('https://mfpd1xxqx7.execute-api.us-east-2.amazonaws.com/QA/Search', {
+      headers: {
+        mode: 'no-cors',
+      }
+    }).then(res => res.json()).then(res => {
+			return res.records.map((questionData: any) => {
+				return new Object({
+					question: questionData.question,
+					answers: questionData.answers.map((answerData: any, answerIndex: number) => {
+						return new Object({
+							answer: answerData.answer,
+							correct: answerIndex == 0,
+						})
+					}),
+					category: questionData.category,
+					explanation: questionData.explain,
+				})
+			})
+		})
+
     if (questions.length < count) throw 'Could not gather enough questions.';
 
     return new Array(10)
