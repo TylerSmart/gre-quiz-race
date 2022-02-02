@@ -146,16 +146,14 @@ export class QuestionsService {
     // const questions = JSON.parse(JSON.stringify(QUESTIONS));
 
     const questions = await fetch('https://mfpd1xxqx7.execute-api.us-east-2.amazonaws.com/QA/Search', {
-      headers: {
-        mode: 'no-cors',
-      }
+
     }).then(res => res.json()).then(res => {
 			return res.records.map((questionData: any) => {
 				return new Object({
 					question: questionData.question,
-					answers: questionData.answers.map((answerData: any, answerIndex: number) => {
+					answers: questionData.answers.map((answer: any, answerIndex: number) => {
 						return new Object({
-							answer: answerData.answer,
+							answer,
 							correct: answerIndex == 0,
 						})
 					}),
