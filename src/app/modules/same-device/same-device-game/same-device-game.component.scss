@@ -87,3 +87,57 @@
     background-color: #2ecc71;
     color:black;
 }
+
+.review-title-container {
+    text-align: center;
+    position: relative;
+    line-height: 90%;
+    width: 90%;
+    height: 90%;
+    margin: 5px auto;
+    padding: 5px;
+}
+
+.review-title-text {
+    line-height: 1.6;
+    font-size: 250%;
+    font-weight: bold;
+    padding: 10px;
+    margin: 20px; 
+}
+
+.review-question-correct-answer {
+    background-color: #2ecc71;
+}
+
+.review-question-container {
+    width: 85%;    width: 85%;
+    height: 100%;
+    position: relative;
+    line-height: 30px;
+    text-align: center;
+    display: block;
+    margin: 10px auto;
+    padding: 0;
+  
+    overflow: hidden;
+  
+    border-width: 0;
+    outline: none;
+    
+    color:black;
+    margin: auto;
+    padding: 20px;
+    border-width: 30;
+    background-color: #eeeeee;
+}
+
+.button-container {
+    width: 85%;
+    margin: auto;
+    text-align: center;
+    padding: 40px;
+}
+.play-again-button {
+    margin: auto;
+}
