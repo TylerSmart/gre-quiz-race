@@ -111,25 +111,23 @@
 }
 
 .review-question-container {
-    width: 85%;    width: 85%;
+    width: 85%;
     height: 100%;
     position: relative;
     line-height: 30px;
-    text-align: center;
+    //text-align: center;
     display: block;
     margin: 10px auto;
-    padding: 0;
-  
-    overflow: hidden;
-  
+    margin-top: 20px;
+    //overflow: hidden;
     border-width: 0;
     outline: none;
     
     color:black;
     margin: auto;
-    padding: 20px;
+    padding: 10px;
     border-width: 30;
-    background-color: #eeeeee;
+    background-color: #d5d5d5;
 }
 
 .button-container {

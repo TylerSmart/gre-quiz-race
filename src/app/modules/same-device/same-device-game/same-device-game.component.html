@@ -68,29 +68,32 @@
   <section *ngSwitchCase="SameDeviceGameState.Review">
     <div class="review-title-container">
       <div class="review-title-text">Pit Stop Review</div>
-    </div>
-    <div>
-      Player 1 Time:
-      {{
-        SameDeviceGame.player1End!.getTime() -
-          SameDeviceGame.player1Start!.getTime() | time: "m"
-      }}
-    </div>
-    <div>
-      Player 2 Time:
-      {{
-        SameDeviceGame.player2End!.getTime() -
-          SameDeviceGame.player2Start!.getTime() | time: "m"
-      }}
+      <div>
+        Player 1 Time:
+        {{
+          SameDeviceGame.player1End!.getTime() -
+            SameDeviceGame.player1Start!.getTime() | time: "m"
+        }}
+      </div>
+      <br>
+      <div>
+        Player 2 Time:
+        {{
+          SameDeviceGame.player2End!.getTime() -
+            SameDeviceGame.player2Start!.getTime() | time: "m"
+        }}
+      </div>
     </div>
 
     <!-- TODO: Show questions that need to be reviewed -->
-    <div class="review-question-container" *ngFor="let reviewQuestion of SameDeviceGame.reviewQuestions">
+    <div *ngFor="let reviewQuestion of SameDeviceGame.reviewQuestions">
+      <div class="review-question-container">
       <div>{{ reviewQuestion.question }}</div>
 
       <div *ngFor="let answer of reviewQuestion.answers">
         {{ answer.answer }}
         <span class="review-question-correct-answer" *ngIf="answer.correct">- Correct answer</span>
+      </div>
       </div>
       <br>
     </div>
