@@ -57,6 +57,10 @@ export class RoomGameService {
   ) {
     this.connect();
 
+    this.questions$.subscribe((questions) => {
+      console.warn('QUESTIONS WERE UPDATED');
+    });
+
     this.socket.on('room-users', (users: any) => {
       console.log({ users });
 
@@ -198,9 +202,19 @@ export class RoomGameService {
   }
 
   get reviewQuestions(): IQuestionData[] | null {
-    return (
-      this.questions$.getValue()?.filter((question) => question.review) ?? null
-    );
+    if (this.player1 && this.player1?.name == this.name) {
+      return (
+        this.questions$
+          .getValue()
+          ?.filter((question) => question.reviewPlayer1) ?? null
+      );
+    } else {
+      return (
+        this.questions$
+          .getValue()
+          ?.filter((question) => question.reviewPlayer1) ?? null
+      );
+    }
   }
 
   get currentQuestion(): IQuestionData {
@@ -237,6 +251,7 @@ export class RoomGameService {
         this.questionIndex$.next(questionIndex + 1);
       }
     } else {
+      this.socket.emit('review-question');
       this.currentQuestion.review = true;
     }
   }

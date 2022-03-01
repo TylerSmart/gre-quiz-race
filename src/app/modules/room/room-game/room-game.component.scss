@@ -1,3 +1,147 @@
-.btn-power-ups {
-  width: 19%;
+.countdown-container {
+  text-align: center;
+  position: relative;
+  line-height: 100%;
+  width: 70%;
+  height: 100%;
+  margin: 10px auto;
+  padding: 10px;
+}
+
+.player-text {
+  line-height: 1.6;
+  font-size: 350%;
+  font-weight: bold;
+  padding: 10px;
+  margin: 20px;
+}
+
+.ready-text {
+  padding: 20px;
+  letter-spacing: 0.09cm;
+}
+
+.countdown-text {
+  font-size: 650%;
+  font-weight: bold;
+  padding: 20px;
+  text-shadow: 0.08em 0.08em 0 rgb(185, 186, 186);
+}
+
+.question-count-container {
+  width: 85%;
+  height: 30px;
+  position: relative;
+  line-height: 30px;
+  text-align: center;
+  display: block;
+  margin: 10px auto;
+  padding: 0;
+
+  overflow: hidden;
+
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6) !important;
+
+  background-color: #2ecc71;
+  color: black;
+}
+
+.username-container {
+  width: 85%;
+  height: 30px;
+  position: relative;
+  line-height: 30px;
+  text-align: center;
+  display: block;
+  margin: 10px auto;
+  padding: 0;
+
+  overflow: hidden;
+
+  border-width: 0;
+  outline: none;
+
+  color: black;
+}
+
+.time-container {
+  width: 85%;
+  height: 30px;
+  position: relative;
+  line-height: 30px;
+  text-align: center;
+  display: block;
+  margin: 10px auto;
+  padding: 0;
+
+  overflow: hidden;
+
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6) !important;
+
+  background-color: #2ecc71;
+  color: black;
+}
+
+.review-title-container {
+  text-align: center;
+  position: relative;
+  line-height: 90%;
+  width: 90%;
+  height: 90%;
+  margin: 5px auto;
+  padding: 5px;
+}
+
+.review-title-text {
+  line-height: 1.6;
+  font-size: 250%;
+  font-weight: bold;
+  padding: 10px;
+  margin: 20px;
+}
+
+.review-question-correct-answer {
+  background-color: #2ecc71;
+}
+
+.review-question-container {
+  width: 85%;
+  height: 100%;
+  position: relative;
+  line-height: 30px;
+  //text-align: center;
+  display: block;
+  margin: 10px auto;
+  margin-top: 20px;
+  //overflow: hidden;
+  border-width: 0;
+  outline: none;
+
+  color: black;
+  margin: auto;
+  padding: 10px;
+  border-width: 30;
+  background-color: #d5d5d5;
+}
+
+.button-container {
+  width: 85%;
+  margin: auto;
+  text-align: center;
+  padding: 40px;
+}
+.play-again-button {
+  margin: auto;
+}
+
+.powerups {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
 }

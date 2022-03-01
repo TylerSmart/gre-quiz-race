@@ -3,10 +3,10 @@
     <div>
       <div class="countdown-container">
         <div class="player-text">
-          Player 1<br/>
+          Player 1<br />
           <div class="ready-text">
-            Ready<br/>
-            In<br/>
+            Ready<br />
+            In<br />
           </div>
         </div>
         <div class="countdown-text">
@@ -36,11 +36,11 @@
     <div>
       <div class="countdown-container">
         <div class="player-text">
-          Player 2<br/>
-            <div class="ready-text">
-              Ready<br/>
-              In<br/>
-          </div>          
+          Player 2<br />
+          <div class="ready-text">
+            Ready<br />
+            In<br />
+          </div>
         </div>
         <div class="countdown-text">
           {{ SameDeviceGame.readyTimer?.countdown$ | async }}
@@ -55,7 +55,7 @@
     </div>
     <div class="time-container">
       {{ timeCounter | time: "m" }}
-    </div >
+    </div>
     <div class="question-count-container">
       {{ SameDeviceGame.questionIndex$.getValue() }}/10
     </div>
@@ -75,7 +75,7 @@
             SameDeviceGame.player1Start!.getTime() | time: "m"
         }}
       </div>
-      <br>
+      <br />
       <div>
         Player 2 Time:
         {{
@@ -88,22 +88,25 @@
     <!-- TODO: Show questions that need to be reviewed -->
     <div *ngFor="let reviewQuestion of SameDeviceGame.reviewQuestions">
       <div class="review-question-container">
-      <div>{{ reviewQuestion.question }}</div>
+        <div>{{ reviewQuestion.question }}</div>
 
-      <div *ngFor="let answer of reviewQuestion.answers">
-        {{ answer.answer }}
-        <span class="review-question-correct-answer" *ngIf="answer.correct">- Correct answer</span>
+        <div *ngFor="let answer of reviewQuestion.answers">
+          {{ answer.answer }}
+          <span class="review-question-correct-answer" *ngIf="answer.correct"
+            >- Correct answer</span
+          >
+        </div>
       </div>
-      </div>
-      <br>
+      <br />
     </div>
     <div class="button-container">
-    <button class="play-again-button" 
-      mat-raised-button
-      (click)="SameDeviceGame.state$.next(SameDeviceGameState.Player1Ready)"
-    >
-      Play Again
-    </button>
+      <button
+        class="play-again-button"
+        mat-raised-button
+        (click)="SameDeviceGame.state$.next(SameDeviceGameState.Player1Ready)"
+      >
+        Play Again
+      </button>
     </div>
   </section>
 </main>
