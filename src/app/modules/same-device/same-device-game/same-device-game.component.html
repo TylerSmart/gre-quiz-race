@@ -17,19 +17,43 @@
   </section>
 
   <section *ngSwitchCase="SameDeviceGameState.Player1">
-    <div class="username-container">
-      <h1>Player 1</h1>
-    </div>
-    <div class="time-container">
-      {{ timeCounter | time: "m" }}
-    </div>
-    <div class="question-count-container">
-      Question {{ SameDeviceGame.questionIndex$.getValue() }}/10
+    <div class="top-container">
+      <div class="user-container">
+          Player 1
+      </div>
+      <div class="time-container">
+        {{ timeCounter | date: 'mm:ss' }}
+      </div>
+      <div class="question-count-container">
+        {{ SameDeviceGame.questionIndex$.getValue() }}/10
+      </div>
     </div>
     <app-question
       [question]="question"
       (submit)="SameDeviceGame.checkAnswer($event)"
     ></app-question>
+    <div class="powerups-container">
+      <div class="powerups-sub-container">
+        <button
+          class="btn-powerup-l"
+          mat-raised-button
+        >
+          -1
+        </button>
+        <button
+          class="btn-powerup-c"
+          mat-raised-button
+        >
+          50/50
+        </button>
+        <button
+          class="btn-powerup-r"
+          mat-raised-button
+        >
+          %
+        </button>
+      </div>
+    </div>
   </section>
 
   <section *ngSwitchCase="SameDeviceGameState.Player2Ready">
@@ -54,7 +78,7 @@
       <h1>Player 2</h1>
     </div>
     <div class="time-container">
-      {{ timeCounter | time: "m" }}
+      {{ timeCounter | date: "mm:ss" }}
     </div >
     <div class="question-count-container">
       {{ SameDeviceGame.questionIndex$.getValue() }}/10

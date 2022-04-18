@@ -5,7 +5,7 @@
     width: 70%;
     height: 100%;
     margin: 10px auto;
-    padding: 10px;
+    padding: 40px;
 }
 
 .player-text {
@@ -13,7 +13,7 @@
     font-size: 350%;
     font-weight: bold;
     padding: 10px;
-    margin: 20px; 
+    margin: 20px;
 }
 
 .ready-text {
@@ -24,68 +24,82 @@
 .countdown-text {
     font-size: 650%;
     font-weight: bold;
-    padding: 20px;
+    padding: 5px;
     text-shadow: .08em .08em 0 rgb(185, 186, 186);
 }
 
-.question-count-container {
-    width: 85%;
-    height: 30px;
-    position: relative;
-    line-height: 30px;
-    text-align: center;
-    display: block;
-    margin: 10px auto;
-    padding: 0;
-
-    overflow: hidden;
-  
-    border-width: 0;
-    outline: none;
-    border-radius: 2px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, .6) !important;
-    
-    background-color: #2ecc71;
-    color:black;
+.top-container {
+    width: 90%;
+    height: 80px;
+    margin-top: 20px;
 }
 
-.username-container {
-    width: 85%;
-    height: 30px;
-    position: relative;
-    line-height: 30px;
+.question-count-container {
+    width: 40%;
+    height: 50%;
+   // position: relative;
+    line-height: 40px;
     text-align: center;
     display: block;
-    margin: 10px auto;
-    padding: 0;
-  
+    margin-bottom: 15px;
+    float: right;
     overflow: hidden;
   
     border-width: 0;
     outline: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6) !important;
     
-    color:black;
+    background-color: #5d6567;
+    color:#fff;
+    font-size: 15px;
+    font-family: 'Segoe UI';
+    border-radius: 20px;
+}
+
+.user-container {
+    width: 60%;
+    height: 100%;
+    position: relative;
+    line-height: 100%;
+    text-align: center;
+    display: block;
+    margin: 10px auto;
+    padding: 0;
+    border-width: 0;
+    outline: none;
+    color:#fff;
+    float: left;
+    font-size: 15px;
+    font-family: 'Segoe UI';
+}
+
+img {
+    width: 50%;
+    height: 50%;
 }
 
 .time-container {
-    width: 85%;
-    height: 30px;
+    width: 40%;
+    height: 50%;
     position: relative;
-    line-height: 30px;
+    line-height: 40px;
     text-align: center;
     display: block;
-    margin: 10px auto;
+    margin-bottom: 15px;
     padding: 0;
   
     overflow: hidden;
   
     border-width: 0;
     outline: none;
-    border-radius: 2px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, .6) !important;
     
-    background-color: #2ecc71;
-    color:black;
+    background-color: #5d6567;
+    color: #fff;
+    font-size: 15px;
+    font-family: 'Segoe UI';
+    float: right;
+    border-radius: 20px;
 }
 
 .review-title-container {
@@ -136,6 +150,62 @@
     text-align: center;
     padding: 40px;
 }
+
 .play-again-button {
     margin: auto;
+}
+
+.powerups-container {
+    width: 83%;
+    margin: auto;
+    text-align: center;
+}
+
+.btn-powerup-l {
+    float: left;
+    margin: 5px;
+    width: 10%;
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    background-color: #5d6567;
+    &:hover{
+      background-color: #fc03ca;
+    }
+    font-size: 15px;
+    font-family: 'Segoe UI';
+    font-weight: normal;
+    border-radius: 20px;
+}
+.btn-powerup-c {
+    float: center;
+    margin: 5px;
+    width: 10%;
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    background-color: #5d6567;
+    &:hover{
+        background-color: #fc03ca;
+    }
+    font-size: 15px;
+    font-family: 'Segoe UI';
+    font-weight: normal;
+    border-radius: 20px;
+}
+.btn-powerup-r {
+    float: right;
+    height: 30px;
+    line-height: 30px;
+    margin: 5px;
+    width: 10%;
+    color: #fff;
+    background-color: #5d6567;
+    &:hover{
+        background-color: #fc03ca;
+    }
+    font-size: 15px;
+    font-family: 'Segoe UI';
+    font-weight: normal;
+    border-radius: 20px;
 }
