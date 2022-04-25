@@ -172,7 +172,7 @@ export class QuestionsService {
 
     if (questions.length < count) throw 'Could not gather enough questions.';
 
-    return new Array(10)
+    let questionArray = new Array(10)
       .fill(undefined)
       .map(
         (_) =>
@@ -180,6 +180,10 @@ export class QuestionsService {
             (Math.random() * 10) % questions.length,
             1
           )[0] as IQuestionData
-      );
+      )
+    for(var question in questionArray) {
+      questionArray[question].answers.sort((a: {}, b: {}) => 0.5 - Math.random());
+    }
+    return questionArray;
   }
 }
