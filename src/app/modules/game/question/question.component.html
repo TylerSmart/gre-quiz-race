@@ -1,7 +1,9 @@
 <main *ngIf="question">
   <div class="qa-container">
     <div class="qtn-container" color="accent">
-      {{ question.question }}
+      <div class="qtn-inner-container">
+        {{ question.question }}
+      </div>
     </div>
     <div class="center">
       <div class="ans-container">
