@@ -57,7 +57,7 @@
       {{ timeCounter | time: "m" }}
     </div>
     <div class="question-count-container">
-      {{ SameDeviceGame.questionIndex$.getValue() }}/10
+      Question {{ SameDeviceGame.questionIndex$.getValue() }}/10
     </div>
     <app-question
       [question]="question"
