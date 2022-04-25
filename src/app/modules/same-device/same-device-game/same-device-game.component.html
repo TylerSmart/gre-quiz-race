@@ -65,9 +65,9 @@
     ></app-question>
   </section>
 
-  <section *ngSwitchCase="SameDeviceGameState.Review">
+  <section class="review-background" *ngSwitchCase="SameDeviceGameState.Review">
     <div class="review-title-container">
-      <div class="review-title-text">Pit Stop Review</div>
+      <div class="review-title-text">Review Pit Stop</div>
       <div>
         Player 1 Time:
         {{
@@ -88,14 +88,25 @@
     <!-- TODO: Show questions that need to be reviewed -->
     <div *ngFor="let reviewQuestion of SameDeviceGame.reviewQuestions">
       <div class="review-question-container">
-        <div>{{ reviewQuestion.question }}</div>
-
-        <div *ngFor="let answer of reviewQuestion.answers">
-          {{ answer.answer }}
-          <span class="review-question-correct-answer" *ngIf="answer.correct"
-            >- Correct answer</span
-          >
+        <div><b>Question:</b> {{ reviewQuestion.question }}</div>
+        <div class="review-question-correct-answer" *ngFor="let answer of reviewQuestion.answers">
+          <div class="question-margin">
+            <span *ngIf="answer.correct"> 
+              <b>Correct answer:</b><br/> {{ answer.answer }}
+            </span>
+          </div>
         </div>
+        <div class="review-question-incorrect-answer" >
+          <div class="question-margin">
+            <b>Incorrect answers:</b>
+            <div  *ngFor="let answer of reviewQuestion.answers">
+              <span *ngIf="!answer.correct"> 
+                {{ answer.answer }}
+              </span>
+            </div>
+          </div>
+        </div>
+
       </div>
       <br />
     </div>
