@@ -131,6 +131,64 @@
     </ng-container>
   </section>
 
+
+
+  <section class="review-background" *ngSwitchCase="RoomGameState.Review">
+    <div class="review-title-container">
+      <div class="review-title-text">Review Pit Stop</div>
+      <div>
+        Player 1 Time:
+        {{
+          RoomGame.player1End!.getTime() - RoomGame.player1Start!.getTime()
+            | time: "m"
+        }}
+      </div>
+      <br />
+      <div>
+        Player 2 Time:
+        {{
+          RoomGame.player2End!.getTime() -
+            RoomGame.player2Start!.getTime() | time: "m"
+        }}
+      </div>
+    </div>
+
+    <!-- TODO: Show questions that need to be reviewed -->
+    <div *ngFor="let reviewQuestion of RoomGame.reviewQuestions">
+      <div class="review-question-container">
+        <div><b>Question:</b> {{ reviewQuestion.question }}</div>
+        <div class="review-question-correct-answer" *ngFor="let answer of reviewQuestion.answers">
+          <div class="question-margin">
+            <span *ngIf="answer.correct"> 
+              <b>Correct answer:</b><br/> {{ answer.answer }}
+            </span>
+          </div>
+        </div>
+        <div class="review-question-incorrect-answer" >
+          <div class="question-margin">
+            <b>Incorrect answers:</b>
+            <div  *ngFor="let answer of reviewQuestion.answers">
+              <span *ngIf="!answer.correct"> 
+                {{ answer.answer }}
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <br />
+    </div>
+    <div class="button-container">
+      <button
+        class="play-again-button"
+        mat-raised-button
+        (click)="RoomGame.playAgain()"
+      >
+        Play Again
+      </button>
+    </div>
+  </section>
+  <!--
   <section *ngSwitchCase="RoomGameState.Review">
     <div>Review</div>
     <div>
@@ -148,7 +206,7 @@
       }}
     </div>
 
-    <!-- TODO: Show questions that need to be reviewed -->
+    <!-- TODO: Show questions that need to be reviewed
     <!-- <div *ngFor="let reviewQuestion of RoomGame.reviewQuestions">
       <div>{{ reviewQuestion.question }}</div>
 
@@ -157,7 +215,7 @@
         <span *ngIf="answer.correct">- Correct answer</span>
       </div>
       <hr />
-    </div> -->
+    </div>
 
     <div *ngFor="let reviewQuestion of RoomGame.reviewQuestions">
       <div class="review-question-container">
@@ -175,4 +233,5 @@
 
     <button mat-raised-button (click)="RoomGame.playAgain()">Play Again</button>
   </section>
+  -->
 </main>

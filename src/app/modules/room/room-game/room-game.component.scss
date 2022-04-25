@@ -98,6 +98,12 @@
   padding: 5px;
 }
 
+.review-background {
+    background-color: #444C4E;
+    margin: 0%;
+    background-size: cover;
+    color: rgba(255, 255, 255, 1)
+}
 .review-title-text {
   line-height: 1.6;
   font-size: 250%;
@@ -107,27 +113,42 @@
 }
 
 .review-question-correct-answer {
-  background-color: #2ecc71;
+    background-color: rgba(133, 242, 75, 0.9);
+    color: rgba(35, 35, 35, 1);
+    margin: auto;
+    border-radius: 5px;
+}
+
+.review-question-incorrect-answer {
+    background-color: rgba(255, 64, 129, 0.6);
+    color: rgba(35, 35, 35, 1);
+    margin: auto;
+    border-radius: 5px;
+}
+
+.question-margin {
+    margin: 5px;
 }
 
 .review-question-container {
-  width: 85%;
-  height: 100%;
-  position: relative;
-  line-height: 30px;
-  //text-align: center;
-  display: block;
-  margin: 10px auto;
-  margin-top: 20px;
-  //overflow: hidden;
-  border-width: 0;
-  outline: none;
-
-  color: black;
-  margin: auto;
-  padding: 10px;
-  border-width: 30;
-  background-color: #d5d5d5;
+    width: 85%;
+    height: 100%;
+    position: relative;
+    line-height: 30px;
+    //text-align: center;
+    display: block;
+    margin: 10px auto;
+    margin-top: 20px;
+    //overflow: hidden;
+    border-width: 0;
+    border-radius: 25px;
+    outline: none;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 0.3);
+    color: rgba(255, 255, 255, 1);
+    margin: auto;
+    padding: 10px;
+    border-width: 30;
+    background-color: #5D5667;
 }
 
 .button-container {
@@ -138,6 +159,8 @@
 }
 .play-again-button {
   margin: auto;
+  background-color: rgba(133, 242, 75, 1);
+  color: rgba(35, 35, 35, 1)
 }
 
 .powerups {
